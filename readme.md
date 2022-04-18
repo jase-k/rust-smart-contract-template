@@ -10,3 +10,12 @@ We will be using ganache-cli to run tests on a simulated blockchain
 # Set-Up
 Install Rust: 
 Install Docker
+#### Web3 crate: 
+Window Users: 
+To install web3 dependency properly at the time of this writing you need to disable the IPC feature. Do this be putting this code in your cargo.toml file: 
+```
+web3 = { version = "0.17.0", default-features = false, features = ["http"] }
+```
+
+Solidity Compiler Options: 
+NPM vs Docker

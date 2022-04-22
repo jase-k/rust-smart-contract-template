@@ -3,14 +3,18 @@
 # Purpose & Overview 
 This project is to demonstrate a workflow environment using Solidity and Rust to build, deploy, and interact with smart contracts on the ethereum blockchain. 
 
-We will be using docker to compile the solidity smart contracts. 
 We will be using the web3 crate. https://crates.io/crates/web3
 We will be using ganache-cli to run tests on a simulated blockchain
+We will be using Truffle to compile the solidity smart contracts. 
+We will be using JavaScript to write tests for the smart contracts. 
 
 # Set-Up
 Install Rust: 
 Install Docker
 Install Ganache-CLI
+Install Node
+Install Truffle
+
 #### Web3 crate: 
 Window Users: 
 To install web3 dependency properly at the time of this writing you need to disable the IPC feature. Do this be putting this code in your cargo.toml file: 
@@ -18,10 +22,23 @@ To install web3 dependency properly at the time of this writing you need to disa
 web3 = { version = "0.17.0", default-features = false, features = ["http"] }
 ```
 
-# Solidity Compiler Options: 
+# Using Truffle to Compile and Deploy Contract: 
+The main commands you'll be using with truffle are those that follow: 
+
+``` truffle init ``` This command launches the folder structure and basic settings of a new truffle project.
+
+``` truffle compile ``` This command compiles your contracts into a json format. You can see the output of this in the build folder (build folder is added with the ``` truffle init ``` command). Note be sure to set up your truffle-config file prior to compiling. More information on the config file here: https://trufflesuite.com/docs/truffle/reference/configuration/ *Note if you are using Ganache the default port is 7545*
+
+``` truffle migrate ``` This command uses your migration scripts to migrate your compiled code to the blockchain. 
+
+``` truffle test ``` This command runs your tests in the test folder.
+
+## Solidity AlternativeCompiler Options: 
 NPM vs Docker
 ### Docker
-Using docker is a simple way to compile your smart contracts into the format the EVM needs to execute your code. You can find more information here: https://docs.soliditylang.org/en/latest/installing-solidity.html#docker
+Using docker is a simple way to compile your smart contracts into the format the EVM needs to execute your code. You can find more information here: https://docs.soliditylang.org/en/latest/installing-solidity.html#docker 
+
+If you don't want to use Truffle to compile your smart contracts, you are able to use a docker container to do just that. However, you do not 
 
 Here are some examples and a breakdown if you aren't familiar with docker: (first you need to install Docker. See above)
 ```
